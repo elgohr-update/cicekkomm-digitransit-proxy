@@ -14,9 +14,7 @@ for HOST in $PROXIED_HOSTS;do ADDHOSTS="--add-host $HOST:$TARGETHOST $ADDHOSTS";
 
 echo $ADDHOSTS
 
-CONTAINER_ID=`docker run -d -p 9000:8080 $ADDHOSTS -e VILKKU_BASIC_AUTH="\"test\"" \
-  -e JOJO_BASIC_AUTH="\"test\"" -e LAPPEENRANTA_BASIC_AUTH="\"test\"" -e LINKKI_BASIC_AUTH="\"test\"" \
-  -e OLD_LISSU_BASIC_AUTH="\"test\"" -e NEW_LISSU_BASIC_AUTH="\"test\"" hsldevcom/digitransit-proxy:integrationtest`
+CONTAINER_ID=`docker run -d -p 9000:8080 $ADDHOSTS hsldevcom/digitransit-proxy:integrationtest`
 
 curl -v http://127.0.0.1:9000
 
